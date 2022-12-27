@@ -1,0 +1,12 @@
+1. Can center the reset button, and move the layer forward. 
+2. can include the animation for when the buttons are pressed. 
+3. Include music/sounds 
+4. Include "you died" text 
+
+
+
+BUGS
+1. When the player was touching the ground, I made it so that there was a certain image, so that if the player was holding down the jump key, 
+the image would not be stuck on the jumping image. However, that made it so that there was no running animation, since every time it was touching 
+the ground, there was only one frame (that wasn't moving). Fixed by making if statement include not keypressing down. 
+2. Could jump infinitely. 
