@@ -339,10 +339,7 @@ class World():
 # Creating instance of player. 
 player = Player(30, screen_height - 130)
 
-# Creating instance of world 
-# if path.exists(f'level{level}.txt'):
-# 	pickle_in = open(f'level{level}', 'rb')
-# 	world_data = pickle.load(pickle_in)
+# Writing a function that will restart a level
 def reset_level(level):
 	player.reset(100, screen_height - 130)
 	jelly_group.empty()
@@ -370,8 +367,6 @@ restart_button = Button(screen_width // 2 - 75 , screen_height // 2 - 65, restar
 
 # Start button 
 start_button = Button(screen_width // 2 - 75 , screen_height // 2 - 65, start_img)
-
-# Writing a function that will restart a level
 
 
 
