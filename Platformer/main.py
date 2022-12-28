@@ -35,17 +35,17 @@ level = 1
 max_levels = 3
 
 # Loading background image
-bg_img = pygame.image.load(r'C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Mushroom expansion\Backgrounds\bg_castle_square.png')
+bg_img = pygame.image.load(r'C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Mushroom expansion\Backgrounds\bg_castle_square.png')
 
 # Resize the background to screen size
 resized_background = pygame.transform.scale(bg_img, (screen_width, screen_height)) 
 
 # Loading the restart button 
-restart_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\restart_button.png")
+restart_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\restart_button.png")
 restart_img = pygame.transform.scale(restart_img,(148,68))
 
 # Loading the start button 
-start_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\start_button.png")
+start_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\start_button.png")
 start_img = pygame.transform.scale(start_img,(148,68))
 
 # Initialize a button class 
@@ -93,13 +93,13 @@ class Player():
 			self.counter = 0
 			# Creating list of sprites for animation 
 			for num in range(1, 12):
-				img_right = pygame.image.load(f'C:/Users/User/Desktop/Y2S2/IntrotoPython/Platformer/platformer-art-complete-pack-0/Base pack/Player/p3_walk/PNG/p3_walk{num}.png')
+				img_right = pygame.image.load(f'C:/Users/User/Desktop/Y2S2/IntrotoPython/IntrotoPythonGame/Platformer/platformer-art-complete-pack-0/Base pack/Player/p3_walk/PNG/p3_walk{num}.png')
 				img_right = pygame.transform.scale(img_right, (30, 48.5))
 				img_left = pygame.transform.flip(img_right, True, False)
 				self.images_right.append(img_right)
 				self.images_left.append(img_left)
 			self.image = self.images_right[self.index]
-			death_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_hurt.png")
+			death_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_hurt.png")
 			self.death_img = pygame.transform.scale(death_img, (30, 48.5))
 			self.rect = self.image.get_rect()
 			self.rect.x = x
@@ -159,12 +159,12 @@ class Player():
 			# Animating the jumping 
 			if self.jumped == True:
 				if self.direction == 1:
-					img_jump = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_jump.png")
+					img_jump = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_jump.png")
 					img_jump = pygame.transform.scale(img_jump, (30, 48.5))
 					self.image = img_jump
 					
 				if self.direction == -1:
-					img_jump = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_jump.png")
+					img_jump = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_jump.png")
 					img_jump = pygame.transform.scale(img_jump, (30, 48.5))
 					img_jump_left = pygame.transform.flip(img_jump, True, False)
 					self.image = img_jump_left
@@ -193,11 +193,11 @@ class Player():
 						dy = tile[1].top - self.rect.bottom
 						self.vel_y = 0
 						if self.direction == 1 and key[pygame.K_LEFT] == False and key[pygame.K_RIGHT] == False:
-							still_image = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_stand.png")
+							still_image = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_stand.png")
 							still_image = pygame.transform.scale(still_image, (30, 48.5))
 							self.image = still_image
 						if self.direction == -1 and key[pygame.K_LEFT] == False and key[pygame.K_RIGHT] == False:
-							still_image = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_stand.png")
+							still_image = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Base pack\Player\p3_stand.png")
 							still_image = pygame.transform.scale(still_image, (30, 48.5))
 							still_img_left = pygame.transform.flip(still_image,True,False)
 							self.image = still_img_left
@@ -252,7 +252,7 @@ door_group = pygame.sprite.Group()
 class Enemy(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		enemy_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Base pack\Enemies\blockerMad.png")
+		enemy_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Base pack\Enemies\blockerMad.png")
 		enemy_img = pygame.transform.scale(enemy_img, (tile_size,tile_size))
 		self.image = enemy_img
 		self.rect = self.image.get_rect()
@@ -272,7 +272,7 @@ class Enemy(pygame.sprite.Sprite):
 class Spikes(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		spikes_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Ice expansion\Tiles\spikesBottomAlt2.png")
+		spikes_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Ice expansion\Tiles\spikesBottomAlt2.png")
 		spikes_img = pygame.transform.scale(spikes_img, (tile_size,tile_size))
 		self.image = spikes_img
 		self.rect = self.image.get_rect()
@@ -283,7 +283,7 @@ class Spikes(pygame.sprite.Sprite):
 class Door(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		door_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Buildings expansion\Tiles\windowOpen.png")
+		door_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Buildings expansion\Tiles\windowOpen.png")
 		door_img = pygame.transform.scale(door_img, (tile_size,tile_size))
 		self.image = door_img
 		self.rect = self.image.get_rect()
@@ -296,8 +296,8 @@ class World():
 		self.tile_list = []
 
 		# Loading textures
-		ice_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Ice expansion\Tiles\iceBlock.png")
-		tundra_img = pygame.image.load(r'C:\Users\User\Desktop\Y2S2\IntrotoPython\Platformer\platformer-art-complete-pack-0\Ice expansion\Tiles\tundraCenter.png')
+		ice_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Ice expansion\Tiles\iceBlock.png")
+		tundra_img = pygame.image.load(r'C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Ice expansion\Tiles\tundraCenter.png')
 
 		# Iterating through list of lists. Drawing textures
 		row_count = 0
