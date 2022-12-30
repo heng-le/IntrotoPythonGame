@@ -213,6 +213,10 @@ class Player():
 				# for debugging
 				# print(game_over)
 
+			# Checking for collision with enemies
+			if pygame.sprite.spritecollide(self, flying_group, False):
+				game_over = -1
+
 			# Checking for collision with the door for exit
 			if pygame.sprite.spritecollide(self, door_group, False):
 				game_over = 1
@@ -247,6 +251,7 @@ class Player():
 jelly_group = pygame.sprite.Group()
 spikes_group = pygame.sprite.Group()
 door_group = pygame.sprite.Group()
+flying_group = pygame.sprite.Group()
 
 # Creating the enemy class 
 class Enemy(pygame.sprite.Sprite):
@@ -265,6 +270,26 @@ class Enemy(pygame.sprite.Sprite):
 		self.rect.x += self.move_direction
 		self.move_counter += 1
 		if abs(self.move_counter) > 30:
+			self.move_direction *= -1
+			self.move_counter *= -1
+
+# Creating a flying class 
+class Flying(pygame.sprite.Sprite):
+	def __init__(self, x, y):
+		pygame.sprite.Sprite.__init__(self)
+		flying_img = pygame.image.load(r"C:\Users\User\Desktop\Y2S2\IntrotoPython\IntrotoPythonGame\Platformer\platformer-art-complete-pack-0\Extra animations and enemies\Enemy sprites\ghost.png")
+		flying_img = pygame.transform.scale(flying_img, (tile_size,tile_size))
+		self.image = flying_img
+		self.rect = self.image.get_rect()
+		self.rect.x = x
+		self.rect.y = y
+		self.move_direction = 1
+		self.move_counter = 0
+
+	def update(self):
+		self.rect.y += self.move_direction
+		self.move_counter += 1
+		if abs(self.move_counter) > 50:
 			self.move_direction *= -1
 			self.move_counter *= -1
 
@@ -324,6 +349,9 @@ class World():
 				if tile == 4:
 					door = Door(col_count * tile_size, row_count * tile_size)
 					door_group.add(door)
+				if tile == 5:
+					flying = Flying(col_count * tile_size, row_count * tile_size)
+					flying_group.add(flying)
 				if tile == 6:
 					spikes = Spikes(col_count * tile_size, row_count * tile_size)
 					spikes_group.add(spikes)
@@ -341,7 +369,8 @@ player = Player(30, screen_height - 130)
 
 # Writing a function that will restart a level
 def reset_level(level):
-	player.reset(100, screen_height - 130)
+	player.reset(30, screen_height - 130)
+	flying_group.empty()
 	jelly_group.empty()
 	spikes_group.empty()
 	door_group.empty()
@@ -387,6 +416,7 @@ while run:
 
 		if game_over == 0:
 			jelly_group.update()
+			flying_group.update()
 
 		if game_over == -1:
 			# This will return True if button is pressed, else will not return 
@@ -413,6 +443,7 @@ while run:
 					world = reset_level(level)
 					game_over = 0
 		
+		flying_group.draw(screen)
 		jelly_group.draw(screen)
 		spikes_group.draw(screen)
 		door_group.draw(screen)
