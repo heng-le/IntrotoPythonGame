@@ -10,3 +10,10 @@ BUGS
 the image would not be stuck on the jumping image. However, that made it so that there was no running animation, since every time it was touching 
 the ground, there was only one frame (that wasn't moving). Fixed by making if statement include not keypressing down. 
 2. Could jump infinitely. 
+
+
+
+To create a new enemy:
+1. Create class and an instance of the class; change the img path 
+2. Add the relevant updates to the while loop for running the game 
+3. Add collision for player with the new enemy, under player collision 
